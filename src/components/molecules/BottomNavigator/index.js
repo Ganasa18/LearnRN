@@ -25,7 +25,6 @@ const Icon = ({label, focus}) => {
       //
       return <IcOrderOn />;
   }
-  return <IcOrderOn />;
 };
 
 const ButtomNavigator = ({state, descriptors, navigation}) => {

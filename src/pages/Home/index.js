@@ -1,14 +1,48 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
+import {profileDummy} from '../../assets';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home Page Screen</Text>
+    <View style={styles.page}>
+      <View style={styles.profileContainer}>
+        <View>
+          <Text style={styles.appName}>Food Market</Text>
+          <Text style={styles.desc}>Lets get some food</Text>
+        </View>
+        <Image style={styles.profile} source={profileDummy} />
+      </View>
     </View>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
+    paddingTop: 32,
+    paddingBottom: 24,
+    backgroundColor: 'white',
+  },
+  appName: {
+    fontSize: 22,
+    fontFamily: 'Poppins-Medium',
+    color: '#020202',
+  },
+  desc: {
+    fontSize: 14,
+    fontFamily: 'Poppins-Light',
+    color: '#8D92A3',
+  },
+  profile: {
+    width: 50,
+    height: 50,
+    borderRadius: 8,
+  },
+});
