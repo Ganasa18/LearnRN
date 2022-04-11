@@ -23,19 +23,22 @@ const SecondRoute = () => (
   <View style={{backgroundColor: '#673ab7', flex: 1}} />
 );
 
+const ThirdRoute = () => <View style={{backgroundColor: '#673a22', flex: 1}} />;
+
 const initialLayout = {width: Dimensions.get('window').width};
 
 const Home = () => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'first', title: 'New Taste'},
-    {key: 'second', title: 'Popular'},
-    {key: 'third', title: 'Recomended'},
+    {key: '1', title: 'New Taste'},
+    {key: '2', title: 'Popular'},
+    {key: '3', title: 'Recomended'},
   ]);
 
   const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
+    1: FirstRoute,
+    2: SecondRoute,
+    3: ThirdRoute,
   });
 
   return (
