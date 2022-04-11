@@ -1,8 +1,43 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
-import {profileDummy} from '../../assets';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
+import React, {useState} from 'react';
+import {
+  foodDummy1,
+  foodDummy2,
+  foodDummy3,
+  foodDummy4,
+  profileDummy,
+} from '../../assets';
+import {FoodCard, Gap} from '../../components';
+import {TabView, SceneMap} from 'react-native-tab-view';
+
+const FirstRoute = () => <View style={{backgroundColor: '#ff4081', flex: 1}} />;
+
+const SecondRoute = () => (
+  <View style={{backgroundColor: '#673ab7', flex: 1}} />
+);
+
+const initialLayout = {width: Dimensions.get('window').width};
 
 const Home = () => {
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    {key: 'first', title: 'New Taste'},
+    {key: 'second', title: 'Popular'},
+    {key: 'third', title: 'Recomended'},
+  ]);
+
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+  });
+
   return (
     <View style={styles.page}>
       <View style={styles.profileContainer}>
@@ -11,6 +46,25 @@ const Home = () => {
           <Text style={styles.desc}>Lets get some food</Text>
         </View>
         <Image style={styles.profile} source={profileDummy} />
+      </View>
+      <View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.foodCardContainer}>
+            <Gap width={24} />
+            <FoodCard image={foodDummy1} />
+            <FoodCard image={foodDummy2} />
+            <FoodCard image={foodDummy3} />
+            <FoodCard image={foodDummy4} />
+          </View>
+        </ScrollView>
+      </View>
+      <View style={styles.tabContainer}>
+        <TabView
+          navigationState={{index, routes}}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={initialLayout}
+        />
       </View>
     </View>
   );
@@ -21,6 +75,7 @@ export default Home;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
+    backgroundColor: 'yellow',
   },
   profileContainer: {
     flexDirection: 'row',
@@ -44,5 +99,12 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 8,
+  },
+  foodCardContainer: {
+    flexDirection: 'row',
+    marginVertical: 24,
+  },
+  tabContainer: {
+    flex: 1,
   },
 });
