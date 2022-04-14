@@ -14,7 +14,8 @@ const SignIn = ({navigation}) => {
 
   const onSubmit = () => {
     console.log('form ', form);
-    Axios.post('http://192.168.101:8000/api/login', form)
+    //  Axios.post('https://13ce-36-90-210-52.ap.ngrok.io/api/login', form)
+    Axios.post('http://192.168.101.48:8000/api/login', form)
       .then((res) => {
         console.log('success', res);
       })
