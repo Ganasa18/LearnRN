@@ -13,6 +13,7 @@ import {
   FoodDetail,
   OrderSummary,
   OrderSuccess,
+  OrderDetail,
 } from '../pages';
 
 import {ButtomNavigator} from '../components/molecules/';
@@ -77,6 +78,12 @@ const Router = () => {
       <Stack.Screen
         name="OrderSuccess"
         component={OrderSuccess}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetail}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

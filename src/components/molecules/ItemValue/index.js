@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: 4,
   },
   label: {
     fontSize: 14,
