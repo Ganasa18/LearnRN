@@ -10,7 +10,6 @@ const Select = ({label, value, onSelectChange}) => {
         <Picker
           selectedValue={value}
           onValueChange={(itemValue) => onSelectChange(itemValue)}>
-          <Picker.Item label="Select your city" value="" />
           <Picker.Item label="Bandung" value="Bandung" />
           <Picker.Item label="Jakarta" value="Jakarta" />
           <Picker.Item label="Semarang" value="Semarang" />
