@@ -1,6 +1,12 @@
 import {combineReducers} from 'redux';
-import {registerReducer} from './auth';
+import {registerReducer, photoReducer} from './auth';
 import {globalReducer} from './global';
-const reducer = combineReducers({registerReducer, globalReducer});
+import {homeReducer} from './home';
+const reducer = combineReducers({
+  registerReducer,
+  globalReducer,
+  photoReducer,
+  homeReducer,
+});
 
 export default reducer;

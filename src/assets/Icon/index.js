@@ -7,7 +7,7 @@ import IcOrderOn from './ic-order-on.svg';
 import IcProfileOff from './ic-profile-off.svg';
 import IcProfileOn from './ic-profile-on.svg';
 import IcStarOn from './ic-star-on.svg';
-import IcStarOff from './ic-star-on.svg';
+import IcStarOff from './ic-star-off.svg';
 import IcMin from './ic-btn-min.svg';
 import IcPlus from './ic-btn-add.svg';
 import IcForward from './ic-forward.svg';

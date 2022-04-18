@@ -1,15 +1,26 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {profileDummy} from '../../../assets';
+import {getData} from '../../../utils';
+import {API_HOST} from '../../../config';
 
 const HomeProfile = () => {
+  const [photo, setPhoto] = useState(profileDummy);
+  useEffect(() => {
+    getData('userProfile').then((res) => {
+      console.log('user profile: ', res);
+      const photoData = {uri: `${API_HOST.storage}/${res.profile_photo_path}`};
+      setPhoto(photoData);
+    });
+  }, []);
+
   return (
     <View style={styles.profileContainer}>
       <View>
         <Text style={styles.appName}>Food Market</Text>
         <Text style={styles.desc}>Lets get some food</Text>
       </View>
-      <Image style={styles.profile} source={profileDummy} />
+      <Image style={styles.profile} source={photo} />
     </View>
   );
 };

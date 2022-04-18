@@ -1,10 +1,9 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
-import {Header, Gap, TextInput, Button, Select} from '../../components';
-import {useForm} from '../../utils';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import Axios from 'axios';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {Button, Gap, Header, Select, TextInput} from '../../components';
+import {setLoading, signUpAction} from '../../redux/action';
+import {useForm} from '../../utils';
 
 const SignUpAddress = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -14,38 +13,55 @@ const SignUpAddress = ({navigation}) => {
     city: 'Bandung',
   });
 
-  // const dispatch = useDispatch();
-  const registerReducer = useSelector((state) => state.registerReducer);
+  const dispatch = useDispatch();
+  const {registerReducer, photoReducer} = useSelector((state) => state);
 
   const onSubmit = () => {
-    console.log('form ', form);
-
     // dispatch({type: 'SET_ADDRESS', value: form});
 
     const data = {
       ...form,
       ...registerReducer,
     };
+    dispatch(setLoading(true));
+    dispatch(signUpAction(data, photoReducer, navigation));
 
-    console.log('data Register: ', data);
-    Axios.post('https://ea21-103-138-49-72.ap.ngrok.io/api/register', data)
-      .then((res) => {
-        // console.log('data success: ', res.data);
-        showToast('Register Success', 'success');
-        navigation.replace('SuccessSignUp');
-      })
-      .catch((err) => {
-        // console.error('sign up error: ', err.response.data.message);
-        showToast(err?.response?.data?.message);
-      });
-  };
+    // Axios.post('http://192.168.101.48:8000/api/register', data)
+    //   .then((res) => {
+    //     console.log('data success: ', res.data);
 
-  const showToast = (message, type) => {
-    showMessage({
-      message,
-      type: type === 'success' ? 'success' : 'danger',
-      backgroundColor: type === 'success' ? '#1ABC9C' : '#D9435E',
-    });
+    //     if (photoReducer.isUploadPhoto) {
+    //       const photoForUpload = new FormData();
+    //       photoForUpload.append('file', photoReducer);
+
+    //       Axios.post(
+    //         'http://192.168.101.48:8000/api/user/photo',
+    //         photoForUpload,
+    //         {
+    //           headers: {
+    //             Authorization: `${res?.data?.data.token_type} ${res?.data?.data.access_token}`,
+    //             'Content-Type': 'multipart/form-data',
+    //           },
+    //         },
+    //       )
+    //         .then((resUpload) => {
+    //           console.log('upload success: ', resUpload);
+    //         })
+    //         .catch((err) => {
+    //           console.log('error: ', err?.response);
+    //           showMessage('Upload photo tidak berhasil');
+    //         });
+    //     }
+
+    //     dispatch(setLoading(false));
+    //     showMessage('Register Success', 'success');
+    //     navigation.replace('SuccessSignUp');
+    //   })
+    //   .catch((err) => {
+    //     // console.log('sign up error: ', err.response.data);
+    //     dispatch(setLoading(false));
+    //     showMessage(err?.response?.data?.message);
+    //   });
   };
 
   return (
@@ -54,7 +70,7 @@ const SignUpAddress = ({navigation}) => {
         <Header
           title={'Address'}
           subtitle={'Make sure it’s valid'}
-          onBack={() => {}}
+          onBack={() => navigation.goBack()}
         />
         <View style={styles.container}>
           <TextInput
