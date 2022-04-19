@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Rating from '../Rating';
+import Number from '../Number';
 
 const ItemListFood = ({
   image,
@@ -21,9 +22,9 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.subTitle}>IDR {price}</Text>
+              <Number number={price} style={styles.subTitle} />
             </View>
-            <Rating rating={rating} />
+            <Rating number={rating} />
           </>
         );
       case 'order-sumarry':
@@ -33,7 +34,7 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.subTitle}>IDR {price}</Text>
+              <Number number={price} style={styles.subTitle} />
             </View>
             <Text style={styles.items}>{items} items</Text>
           </>
@@ -45,9 +46,11 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.subTitle}>
-                {items} items . IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.subTitle}>{items} items </Text>
+                <View style={styles.dot} />
+                <Number number={price} style={styles.subTitle} />
+              </View>
             </View>
           </>
         );
@@ -58,9 +61,11 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.subTitle}>
-                {items} items . IDR {price}
-              </Text>
+              <View style={styles.row}>
+                <Text style={styles.subTitle}>{items} items </Text>
+                <View style={styles.dot} />
+                <Number number={price} style={styles.subTitle} />
+              </View>
             </View>
             <View>
               <Text style={styles.date}>{date}</Text>
@@ -74,7 +79,7 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.subTitle}>IDR {price}</Text>
+              <Number number={price} style={styles.subTitle} />
             </View>
             <Rating />
           </>
@@ -133,6 +138,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: 13,
     color: '#8D92A3',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 3,
+    height: 3,
+    borderRadius: 3,
+    backgroundColor: '#8D92A3',
+    marginHorizontal: 4,
   },
   items: {
     fontSize: 13,

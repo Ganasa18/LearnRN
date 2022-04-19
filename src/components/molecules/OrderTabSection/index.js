@@ -41,30 +41,9 @@ const InProgress = () => {
       <ItemListFood
         type="in-progress"
         items={3}
-        price={'2.000.000'}
+        price={2000000}
         name={'Soup Bumil'}
         image={foodDummy1}
-      />
-      <ItemListFood
-        type="in-progress"
-        items={3}
-        price={'2.000.000'}
-        name={'Soup Bumil'}
-        image={foodDummy2}
-      />
-      <ItemListFood
-        type="in-progress"
-        items={3}
-        price={'2.000.000'}
-        name={'Soup Bumil'}
-        image={foodDummy3}
-      />
-      <ItemListFood
-        type="in-progress"
-        items={3}
-        price={'2.000.000'}
-        name={'Soup Bumil'}
-        image={foodDummy4}
       />
     </View>
   );
@@ -77,7 +56,7 @@ const PastOrders = () => {
       <ItemListFood
         type="past-orders"
         items={3}
-        price={'2.000.000'}
+        price={2000000}
         name={'Soup Bumil'}
         image={foodDummy1}
         date="Jun 12, 14:00"
@@ -86,7 +65,7 @@ const PastOrders = () => {
       <ItemListFood
         type="past-orders"
         items={3}
-        price={'2.000.000'}
+        price={2000000}
         name={'Soup Bumil'}
         image={foodDummy4}
         date="Jun 12, 14:00"

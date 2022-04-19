@@ -8,7 +8,6 @@ const HomeProfile = () => {
   const [photo, setPhoto] = useState(profileDummy);
   useEffect(() => {
     getData('userProfile').then((res) => {
-      console.log('user profile: ', res);
       const photoData = {uri: `${API_HOST.storage}/${res.profile_photo_path}`};
       setPhoto(photoData);
     });
